@@ -1,35 +1,38 @@
-mongoose = require('./connection')
+const { Schema, model } = require('./connection')
 
-const TrakSchema = new mongoose.Schema({
-    date: {type: Date, required: true, unique: true},
-    sleep: {
-        duration: {type: Number},
-        wakeupTime: {type: Date},
-    },
-    hydration: {
-        quantity: Number,
-        units: String   
-    },
-    expenses: [
-    {
-        damage: Number,
-        category: String
-    }
-    ],
-    exercise: [
-    {
-        duration: Number,
-        category: String
-    }
-    ],
-    reading: [
-    {
-        duration: Number,
-        content: String
-    }
-    ]
-}, {strict: false})
+const FieldSchema = new Schema({
 
-const Trak = mongoose.model("Trak", TrakSchema)
+    // field name
+    name: {type: String, required: true},
+
+    // Ex number, string
+    type: {type: String, required: true}
+    
+}, { _id: false, default: []})
+
+const TrakSchema = new Schema({
+    
+    // User owning trak
+    user_id: {
+        type: Schema.Types.ObjectId, 
+        ref: 'User',
+        required: true
+    },
+
+    // Hydration, Exercise, Sleep
+    name: {type: String, required: true},
+
+    // Duration, Quantity
+    type: {type: String, required: true},
+
+    // Emoji for frontend button
+    emoji: {type: String, required: true, maxLength: 5},
+
+    // Additional fields like exercise type or reading content
+    fields: [FieldSchema]
+
+}, { versionKey: false })
+
+const Trak = model("Trak", TrakSchema)
 
 module.exports = Trak
