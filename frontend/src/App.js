@@ -1,10 +1,14 @@
 import React from 'react';
 import './App.css';
+import Header from "./components/Header"
+import Traks from "./components/Traks"
 
 function App() {
   return (
-    <h1>React Starter Template</h1>
-  );
+    <>    
+      <Header />
+      <Traks />
+    </>
+  )
 }
-
 export default App;
