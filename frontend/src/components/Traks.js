@@ -1,3 +1,4 @@
+import { useState } from "react"
 import useDate from "../hooks/date"
 import useTrik from "../hooks/trik"
 import useTraks from "../hooks/traks"
@@ -9,10 +10,11 @@ const Traks = () => {
     const { today } = useDate()
     const traks = useTraks(userId)
     const trik = useTrik(today, userId)
-    
+    const [selected, setSelected] = useState()
+
     return (
         <div className="flex flex-wrap justify-evenly my-5">
-            {traks.map(trak => <Trak {...trak}/>)}
+            {traks?.map(trak => <Trak key={trak._id} {...trak} setSelected={setSelected} selected={trak._id === selected}/>)}
         </div>
     )
 }
