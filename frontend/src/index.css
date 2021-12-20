@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer components {
+  .trak-container {
+    @apply flex flex-col h-20 bg-gray-600 w-11/12 mb-2.5 rounded-xl box-shadow
+  }
 }
 
 @layer utilities {
