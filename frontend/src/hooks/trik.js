@@ -8,7 +8,6 @@ const useTrik = (date, userId) => {
         `triks/${date}/${userId}`,
         async () => {
             const url = `${TRIK_API_URL}/${date}?userId=${userId}`
-            console.log(url)
             return await http.get(url)
         }
     )
