@@ -1,9 +1,14 @@
 import moment from "moment"
 
-const useDate = () => {
+export const useDate = () => {
     const today = moment().format('MM-DD-YYYY')
-
     return { today }
 }
 
-export default useDate
+// export const useSecondCounter = () => {
+//     let count = 0
+//     setInterval( () => {
+//         count += 1
+//     }, 1000)
+//     return count
+// }
