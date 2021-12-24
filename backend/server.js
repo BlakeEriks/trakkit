@@ -5,4 +5,19 @@ const app = express()
 
 middleware(app)
 
+/* 
+
+Three models in this app
+
+Trak - Objects saved per user that record what they want to track
+
+Trik - Holds logs on a day basis of what the user has recorded
+
+Aktive - Holds open duration traks
+
+TODO's - add middleware to require valid user id
+
+*/
+
+
 app.listen(PORT, () => console.log('listening'))

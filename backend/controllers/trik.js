@@ -11,6 +11,7 @@ TrikRouter.get('/:date', async (req,res) => {
 
     if (!user_id) {
         res.status(400).json("User id required to get triks")
+        return
     }
 
     if (!date || !moment(date, DATE_FORMAT, true).isValid()) {
